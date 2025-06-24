@@ -5,11 +5,17 @@ const butEl = document.getElementById("my-but")
 const butEl_2 = document.getElementById("my-but-2")
 const sumEl = document.getElementById("sum")
 const formEl = document.querySelector("form")
+const soundDom = document.getElementById("sound-dom")
 const alarmDom = document.getElementById("alarm-dom")
 const alarm_h2 = document.getElementById("alarm-h2")
-const soundDom = document.getElementById("sound-dom")
 const containerEl = document.getElementById("container")
 const bodyEl = document.querySelector("body")
+
+
+
+
+
+
 
 
 alarmDom.addEventListener("click", () => {
@@ -30,18 +36,14 @@ let startData = []
 let myDate
 let timer
 
-const getStarted = localStorage.getItem("mytotal")
+
+const getStarted = localStorage.getItem("newList")
 const getDateArr = JSON.parse(getStarted)
 
 console.log(getDateArr)
 
 
 
-const textDate = getDateArr[getDateArr.length - 1].myNote
-
-
-const mainDate = getDateArr.map(item => item.myDate)
-const getDate = mainDate[mainDate.length - 1].substring(11, 16)
 
 
 
@@ -51,9 +53,11 @@ getDateArr.forEach(item => {
     const itemNote = item.myNote
 
 
+
     function fetchAlarm() {
 
         myDate = new Date().toString()
+
 
 
         if (myDate.includes(itemDate)) {
@@ -83,15 +87,9 @@ getDateArr.forEach(item => {
 
 
 
+// localStorage.clear("addall")
 
-// localStorage.clear("newDetail")
-
-// localStorage.clear("getAll")
-
-// localStorage.clear("sumup")
-
-// localStorage.clear("summing")
-// localStorage.clear("total")
+// localStorage.clear("consume")
 
 butEl.addEventListener("click", (e) => {
 
@@ -100,7 +98,7 @@ butEl.addEventListener("click", (e) => {
     scheduleList.myNote = textEl.value
     scheduleList.myDate = scheduleDate.value
 
-    const latestData = localStorage.getItem("mytotal")
+    const latestData = localStorage.getItem("fetchAll")
 
     const storedData = JSON.parse(latestData)
 
@@ -128,7 +126,7 @@ butEl.addEventListener("click", (e) => {
         agendaEl.value = ""
         scheduleDate.value = ""
         scheduleList = {}
-        location.reload()
+
     }
 
 })
@@ -144,7 +142,7 @@ butEl_2.addEventListener("click", (e) => {
 
 
 
-    localStorage.setItem("mytotal", JSON.stringify(startData))
+    localStorage.setItem("fetchAll", JSON.stringify(startData))
 
 
 
@@ -153,7 +151,7 @@ butEl_2.addEventListener("click", (e) => {
     if (startData.length === 0) {
 
         formEl.innerHTML = ""
-
+        sumEl.textContent = "No Schedules"
     } else {
 
         formEl.innerHTML = ""
@@ -165,12 +163,9 @@ butEl_2.addEventListener("click", (e) => {
             const inputEl = document.createElement("input")
             inputEl.type = "text"
             inputEl.value = `${item.myNote}  ${item.myDate}`
-            const button = document.createElement("button")
-            button.textContent = "Schedule"
             const button_2 = document.createElement("button")
             button_2.textContent = "Cancel"
             subDiv.appendChild(inputEl)
-            subDiv.appendChild(button)
             subDiv.appendChild(button_2)
             divEl.appendChild(subDiv)
 
@@ -181,7 +176,9 @@ butEl_2.addEventListener("click", (e) => {
 
     }
 
-
-
+    const scheduleBut = document.createElement("button")
+    scheduleBut.textContent = "Make Schedule"
+    scheduleBut.classList.add("scheduleBut")
+    formEl.append(scheduleBut)
 })
 
