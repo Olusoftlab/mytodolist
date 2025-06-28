@@ -24,6 +24,8 @@ alarmDom.addEventListener("click", () => {
     soundDom.loop = false
     containerEl.style.opacity = 1
 
+
+
 })
 
 
@@ -35,6 +37,8 @@ let startData = []
 
 let myDate
 let timer
+let n=0
+
 
 
 const getStarted = localStorage.getItem("newList")
@@ -86,10 +90,14 @@ getDateArr.forEach(item => {
 })
 
 
+// localStorage.clear("supplementAll")
+// localStorage.clear("arrivalAll")
 
-// localStorage.clear("addall")
+// localStorage.clear()
+// localStorage.clear()
 
-// localStorage.clear("consume")
+
+// localStorage.clear()
 
 butEl.addEventListener("click", (e) => {
 
@@ -97,8 +105,9 @@ butEl.addEventListener("click", (e) => {
 
     scheduleList.myNote = textEl.value
     scheduleList.myDate = scheduleDate.value
+    scheduleList.id=textEl.value
 
-    const latestData = localStorage.getItem("fetchAll")
+    const latestData = localStorage.getItem("verilog")
 
     const storedData = JSON.parse(latestData)
 
@@ -107,12 +116,25 @@ butEl.addEventListener("click", (e) => {
         startData = [...storedData, scheduleList]
         localStorage.setItem("newList", JSON.stringify(startData))
         textEl.value = ""
-        scheduleList.value = ""
         agendaEl.value = ""
         scheduleDate.value = ""
         scheduleList = {}
         location.reload()
-    } else {
+    }else if(storedData && storedData.length > 6){
+
+        scheduleList.myNote=""
+        scheduleList.myDate=""
+        scheduleList.id=""     
+        startData = [...storedData, scheduleList]
+        localStorage.setItem("newList", JSON.stringify(startData))
+        textEl.value = ""
+        agendaEl.value = ""
+        scheduleDate.value = ""
+        scheduleList = {}
+        location.reload()
+     
+    }
+     else {
 
 
         startData.push(scheduleList)
@@ -139,10 +161,11 @@ butEl_2.addEventListener("click", (e) => {
 
     const dataTray = localStorage.getItem("newList")
     startData = JSON.parse(dataTray)
+    
+    console.log(startData)
 
 
-
-    localStorage.setItem("fetchAll", JSON.stringify(startData))
+    localStorage.setItem("verilog", JSON.stringify(startData))
 
 
 
@@ -158,19 +181,37 @@ butEl_2.addEventListener("click", (e) => {
         sumEl.textContent = "Schedules"
 
         startData.forEach(item => {
-
+        
             const subDiv = document.createElement("div")
             const inputEl = document.createElement("input")
             inputEl.type = "text"
             inputEl.value = `${item.myNote}  ${item.myDate}`
-            const button_2 = document.createElement("button")
-            button_2.textContent = "Cancel"
+            inputEl.id=inputEl.value
+            inputEl.style.cursor="pointer"
+            inputEl.style.width="500px"
             subDiv.appendChild(inputEl)
-            subDiv.appendChild(button_2)
-            divEl.appendChild(subDiv)
+            divEl.appendChild(subDiv)    
+            
+            subDiv.addEventListener("click", ()=>{
 
+                subDiv.remove()
+                startData.splice(startData.indexOf(item),1)
+                console.log(startData)
+                
+                if (startData.length === 0){
+                    
+                    localStorage.setItem("verilog", JSON.stringify(startData))
+                     
+                }
+
+                localStorage.setItem("newList", JSON.stringify(startData))
+
+
+            })
 
         })
+
+
 
         formEl.append(divEl)
 
@@ -179,6 +220,11 @@ butEl_2.addEventListener("click", (e) => {
     const scheduleBut = document.createElement("button")
     scheduleBut.textContent = "Make Schedule"
     scheduleBut.classList.add("scheduleBut")
+ 
     formEl.append(scheduleBut)
-})
+
+}
+
+
+)
 

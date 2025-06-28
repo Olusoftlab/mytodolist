@@ -1,0 +1,26 @@
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height:100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(179, 171, 171);
+  
+}
+
+
+a{
+
+    text-decoration: none; 
+    text-transform: uppercase;
+    color:rgb(180, 32, 32);
+    border:2px solid white;
+    box-shadow: 1px 1px 4px black;
+}
+
+
+h1{
+    margin:0px;
+    font-size:150px;
+}
+

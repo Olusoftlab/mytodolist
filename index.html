@@ -4,61 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="index.css">
-    <script  src="index.js" defer ></script>
+    <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
     
-       <section  id="container" >
-
-              <div class="my-todo">
-
-                     <h1>My <span  id="sep" >ToDo</span> List</h1>
-
-              </div>
-             
-              <div class="content" >
-                
-                    <details style="cursor:pointer"  >
-                             <summary   id="sum" >Create a todo list</summary> 
-                             <form>
-                                   <div>
-                                           
-                                          <label id="lab-1"  for="Agenda">Agenda</label>
-                                          <input  type="text" id="agenda" name="Agenda" /><br><br>
-                                          
-                                          <label  for="Schedule-date">Schedule-Date</label>
-                                          <input type="datetime-local" id="Schedule-date" name="Schedule-date" /><br><br>
-                                                        
-                                          
-                                          <textarea   id="text"   style="outline:none"   rows="15" cols="70"></textarea>
-
-                                   </div> 
-                                   <div>
-                                          <button type="submit" id="my-but"   class="btn">Add</button><br><br>
-                                          <button type="submit" id="my-but-2" class="btn">View Schedules</button>
-                                   </div>
-                                 
-                             </form>                
-                       
-
-                    </details>
-
-                    
-              </div>
-       </section> 
+  <a href="home.html"  target="_blank" ><h1>notify</h1></a>
+          
 
 
-       <div  id="alarm-dom"     class="alarm-area">
-              <img  src="images/download-removebg-preview.png" width="30px" height="30px"  alt="bell" />
-              <h2 id="alarm-h2"></h2>
-              <audio  style="visibility:hidden"  loop    id="sound-dom"    controls  type="audio/mpeg"  >
-
-                   <source  src="media/notification-7-158193.mp3" />
-              </audio>   
-       </div>
+     
 
 
-      
+    <script  src="js/home.js" ></script>
 </body>
 </html>
