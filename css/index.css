@@ -123,3 +123,10 @@ input{
       cursor:pointer;
 
 }
+
+a{
+
+    font-size: 25px;
+    color:white;
+    text-decoration: none;
+}

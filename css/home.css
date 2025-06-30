@@ -1,11 +1,11 @@
 body{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: cursive;
     height:100vh;
     display:flex;
     justify-content: center;
     align-items: center;
     background-color: rgb(179, 171, 171);
-  
+     
 }
 
 

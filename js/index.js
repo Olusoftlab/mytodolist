@@ -119,20 +119,7 @@ butEl.addEventListener("click", (e) => {
         agendaEl.value = ""
         scheduleDate.value = ""
         scheduleList = {}
-        location.reload()
-    }else if(storedData && storedData.length > 6){
-
-        scheduleList.myNote=""
-        scheduleList.myDate=""
-        scheduleList.id=""     
-        startData = [...storedData, scheduleList]
-        localStorage.setItem("newList", JSON.stringify(startData))
-        textEl.value = ""
-        agendaEl.value = ""
-        scheduleDate.value = ""
-        scheduleList = {}
-        location.reload()
-     
+    
     }
      else {
 
